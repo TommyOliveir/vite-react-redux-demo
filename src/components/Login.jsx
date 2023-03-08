@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import { login, logout } from "../features/user"
+import { useDispatch } from "react-redux";
 
 function Login() {
-
   const [formData, setFormData] = useState({
     username: "",
     password: ""
   })
+  const dispatch = useDispatch()
 
   function handleInputChange(event) {
     console.log(event)
-        const {name, value, type, checked} = event.target
-        setFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                [name]: type === "checkbox" ? checked : value
-            }
-        })
+    const { name, value, type, checked } = event.target
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value
+      }
+    })
   }
 
   return (
@@ -38,13 +39,14 @@ function Login() {
           onChange={handleInputChange} />
       </label>
       <button
-        // onClick={() => {
-        //   dispatch(login({ name: formData.username, password: formData.password }));
-        // }}
+        onClick={() => {
+          dispatch(login({ username: formData.username, password: formData.password }));
+        }}
       >
         Login
       </button>
-   
+      {formData.username}
+      {formData.password}
     </div>
   )
 }
