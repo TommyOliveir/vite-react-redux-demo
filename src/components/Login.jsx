@@ -24,6 +24,12 @@ function Login() {
     })
   }
 
+  function handleLogin() {
+    dispatch(login({ username: formData.username, password: formData.password }));
+    setFormData({})
+
+  }
+
   return (
     <div>
       <label>
@@ -33,7 +39,7 @@ function Login() {
           type="text"
           value={formData.username}
           onChange={handleInputChange} />
-         
+
       </label>
       <label>
         password
@@ -43,14 +49,11 @@ function Login() {
           value={formData.password}
           onChange={handleInputChange} />
       </label>
-      <button
-        onClick={() => {
-          dispatch(login({ username: formData.username, password: formData.password }));
-
-        }}
+      {!user.isLogin && <button
+        onClick={handleLogin}
       >
         Login
-      </button>
+      </button>}
 
       {user.isLogin === true && <button
         onClick={() => {
