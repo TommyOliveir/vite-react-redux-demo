@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialStateValue = { username: "", password: "", }
-const defaultpassword = "admin"
+const initialStateValue = { username: "", password: "", isLogin: false }
+const defaultUsername = "admin"
+const defaultPassword = "admin"
+
 
 export const userSlice = createSlice({
     name: "user",
@@ -9,14 +11,28 @@ export const userSlice = createSlice({
     reducers: {
         login: (state, action) => {
             state.value = action.payload;
-            if (state.value.password === defaultpassword) {
-                alert("password is correct")
+            if (state.value.password === defaultPassword && state.value.username === defaultUsername) {
+                alert("credetial correct")
+                    
+                state.value = {
+                ...state.value,
+                isLogin: true
+                }            
+               console.log(state.value)
+           
+            } else {
+                alert("password incorrect")
+                return state.value = initialStateValue
+               
             }
+          
         },
-
+      
         logout: (state) => {
             state.value = initialStateValue;
-        }
+        },
+
+     
 
     }
 });

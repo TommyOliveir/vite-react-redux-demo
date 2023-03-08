@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       Authentication Project with redux toolkit
     <Login/>
-    <p>Name: {user.username}</p>
+    {user.isLogin && <p>Welcome {user.username}</p>  }
     </div>
   )
 }

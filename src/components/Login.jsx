@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { login, logout } from "../features/user"
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ function Login() {
   })
   console.log(formData.username)
   console.log(formData.password)
+  const user = useSelector((state) => state.user.value)
   const dispatch = useDispatch()
 
   function handleInputChange(event) {
@@ -31,6 +33,7 @@ function Login() {
           type="text"
           value={formData.username}
           onChange={handleInputChange} />
+         
       </label>
       <label>
         password
@@ -43,18 +46,21 @@ function Login() {
       <button
         onClick={() => {
           dispatch(login({ username: formData.username, password: formData.password }));
+
         }}
       >
         Login
       </button>
-      <button
+
+      {user.isLogin === true && <button
         onClick={() => {
           dispatch(logout());
         }}
       >
         Logout
-      </button>
-   
+      </button>}
+
+
     </div>
   )
 }
