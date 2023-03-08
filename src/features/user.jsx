@@ -21,7 +21,7 @@ export const userSlice = createSlice({
                console.log(state.value)
            
             } else {
-                alert("password incorrect")
+                // alert("password incorrect")
                 return state.value = initialStateValue
                
             }

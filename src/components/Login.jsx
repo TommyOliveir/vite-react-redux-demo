@@ -25,8 +25,9 @@ function Login() {
   }
 
   function handleLogin() {
+    console.log("hey")
     dispatch(login({ username: formData.username, password: formData.password }));
-    setFormData({})
+   setFormData({})
 
   }
 
