@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      Authentication Project with redux toolkit ccccc
+      Authentication Project with redux toolkit
     <Login/>
     <p>Name: {user.username}</p>
     </div>
