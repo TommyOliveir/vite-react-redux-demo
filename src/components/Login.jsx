@@ -7,6 +7,8 @@ function Login() {
     username: "",
     password: ""
   })
+  console.log(formData.username)
+  console.log(formData.password)
   const dispatch = useDispatch()
 
   function handleInputChange(event) {
@@ -45,8 +47,14 @@ function Login() {
       >
         Login
       </button>
-      {formData.username}
-      {formData.password}
+      <button
+        onClick={() => {
+          dispatch(logout());
+        }}
+      >
+        Logout
+      </button>
+   
     </div>
   )
 }
