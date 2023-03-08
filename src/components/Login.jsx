@@ -1,40 +1,50 @@
-import React from 'react'
-import {login, logout} from "../features/user"
+import React, { useState } from 'react'
+import { login, logout } from "../features/user"
 
 function Login() {
 
-  const [username, setUsername] = ('')
+  const [formData, setFormData] = useState({
+    username: "",
+    password: ""
+  })
 
-  function handleInputChange() {
-    setUsername(username)
+  function handleInputChange(event) {
+    console.log(event)
+        const {name, value, type, checked} = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
   }
 
   return (
     <div>
-       <label>
+      <label>
         Username
         <input
           name="username"
           type="text"
-          value={username}
+          value={formData.username}
           onChange={handleInputChange} />
       </label>
-       <label>
+      <label>
         password
         <input
           name="password"
           type="password"
-          value={password}
+          value={formData.password}
           onChange={handleInputChange} />
       </label>
       <button
-        onClick={() => {
-          dispatch(login({ name: username, password: password }));
-        }}
+        // onClick={() => {
+        //   dispatch(login({ name: formData.username, password: formData.password }));
+        // }}
       >
         Login
       </button>
-      {username}
+   
     </div>
   )
 }
