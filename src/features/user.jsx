@@ -13,17 +13,18 @@ export const userSlice = createSlice({
             state.value = action.payload;
             if (state.value.password === defaultPassword && state.value.username === defaultUsername) {
                 // alert("credetial correct")
-                    
-                state.value = {
+                
+               state.value = {
                 ...state.value,
                 isLogin: true
+
                 }            
-               console.log(state.value)
+             
            
             } else {
-                // alert("password incorrect")
+                alert("Please provide correct password")
                 return state.value = initialStateValue
-               
+                 
             }
           
         },
